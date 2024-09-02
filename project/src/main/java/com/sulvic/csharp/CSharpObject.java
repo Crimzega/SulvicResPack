@@ -14,9 +14,9 @@ public class CSharpObject{
 	
 	public static class CSharpComponent{
 		
-		private boolean isEnabled, isMonoBehaviour;
-		private String ownerName, typePath;
-		private Map<String, Object> propertyValues = ContentBuilder.newHashMap(), propertyReference = ContentBuilder.newHashMap(), fieldValues = ContentBuilder.newHashMap(),
+		public boolean isEnabled, isMonoBehaviour;
+		public String ownerName, typePath;
+		public Map<String, Object> propertyValues = ContentBuilder.newHashMap(), propertyReference = ContentBuilder.newHashMap(), fieldValues = ContentBuilder.newHashMap(),
 			fieldReferences = ContentBuilder.newHashMap(), propertyRecerenceArrays = ContentBuilder.newHashMap(), fieldReferenceArrays = ContentBuilder.newHashMap();
 		
 	}

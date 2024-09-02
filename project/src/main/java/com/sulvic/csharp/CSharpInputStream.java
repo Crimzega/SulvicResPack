@@ -36,12 +36,13 @@ public class CSharpInputStream extends DataInputStream{
 		readUTF();
 		readByte();
 		int count = readByte();
-		for(int i = 0; i < count, i++){
+		for(int i = 0; i < count; i++){
 			CSharpObject.CSharpComponent component = new CSharpObject.CSharpComponent();
+			result.components.add(component);
 		}
 		return result;
 	}
 	
-	public void close() throws IOException{ super.close(); }
+	public void close() throws IOException{ theStream.close(); }
 	
 }

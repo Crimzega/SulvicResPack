@@ -44,7 +44,17 @@ public class PdnImage{
 		else stream.getChannel().position(oldPos);
 		long oldPos2 = stream.getChannel().position();
 		if(stream.available() < 2) throw new EOFException();
-		int first = stream.read(), second = stream.read();
+		int first = stream.read();
+		if(first == -1) throw new EOFException();
+		int second = stream.read();
+		if(second == -1) throw new EOFException();
+		// BinaryFormatter formatter = new BinaryFormatter();
+		// SerializationFallbackBinder binder = new SerializationFallbackBinder();
+		// binder.AddAssembly(typeof(AssetmblyServices).Assebly);
+		// binder.AddAssembly(typeof(AssetmblyServices).Assebly);
+		// binder.AddAssembly(typeof(AssetmblyServices).Assebly);
+		// binder.SetNextRequiredBaseType(typeof(DOcument));
+		// formatter.Binder = binder;
 		Object obj = null;
 		if(first != 0 || second != 1){
 			if(first == 31 && second == 139){
