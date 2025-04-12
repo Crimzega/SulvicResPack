@@ -14,11 +14,21 @@
 		<dependency>
 			<groupId>com.sulvic</groupId>
 			<artifactId>sulvic-utils</artifactId>
-			<version>1.6</version>
+			<version>1.8</version>
 		</dependency>
 		<dependency>
 			<groupId>com.sulvic</groupId>
 			<artifactId>sulvic-jopt</artifactId>
+			<version>1.2</version>
+		</dependency>
+		<dependency>
+			<groupId>com.sulvic</groupId>
+			<artifactId>sulvic-image</artifactId>
+			<version>1.0</version>
+		</dependency>
+		<dependency>
+			<groupId>com.sulvic</groupId>
+			<artifactId>sulvic-engine</artifactId>
 			<version>1.2</version>
 		</dependency>
 		<dependency>

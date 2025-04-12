@@ -1,0 +1,20 @@
+{
+	"[java]": {
+		"editor.suggest.snippetsPreventQuickSuggestions": false,
+		"editor.formatOnSave": false,
+		"files.encoding": "windows1252",
+		"editor.formatOnPaste": false
+	},
+	"editor.insertSpaces": false,
+	"editor.rulers": [180],
+	"files.insertFinalNewline": true,
+	"files.eol": "\n",
+	"files.trimFinalNewlines": true,
+	"java.project.sourcePaths": ["project/main/src/java"],
+	"java.configuration.runtimes": [{
+		"name": "JavaSE-11",
+		"path": "C:/Program Files/Java/JDK-11.0.25"
+	}
+],
+"java.configuration.updateBuildConfiguration": "interactive"
+}
