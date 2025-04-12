@@ -13,8 +13,7 @@
 	"java.project.sourcePaths": ["project/main/src/java"],
 	"java.configuration.runtimes": [{
 		"name": "JavaSE-11",
-		"path": "C:/Program Files/Java/JDK-11.0.25"
-	}
-],
-"java.configuration.updateBuildConfiguration": "interactive"
+		"path": "C:\\Program Files\\Java\\JDK-11.0.25"
+	}],
+	"java.configuration.updateBuildConfiguration": "interactive"
 }

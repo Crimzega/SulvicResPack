@@ -12,12 +12,12 @@ import javax.imageio.ImageIO;
 
 public class TranslocatorStitcher{
 
-	private static final AssetLocation MODEL_ASSET = new AssetLocation("translocator", "tex");
+	private static final AssetLocation MODEL_ASSET = new AssetLocation("translocators", "tex");
 	private static BufferedImage fastTransferImg, filterImg, inverterOffImg, inverterOnImg, signalOffImg, signalOnImg, unknownImg;
 
 	private static InputStream getSegmentedResourceStream(String path){
 		if(path != null && !path.equals("")){
-			String fullPath = String.format("/assets/translocator/segmented/%s.png", path);
+			String fullPath = String.format("/project/assets/translocators/textures/segmented/%s.png", path);
 			return TranslocatorStitcher.class.getResourceAsStream(fullPath);
 		}
 		else return null;
@@ -64,7 +64,7 @@ public class TranslocatorStitcher{
 				return inverterOnImg;
 			case UNKNOWN:
 				if(unknownImg == null) unknownImg = getTexture(stateStr);
-				return inverterOffImg;
+				return unknownImg;
 			default:
 				return null;
 		}
@@ -86,20 +86,24 @@ public class TranslocatorStitcher{
 
 	private static File getModelPath(File folder){ return new File(folder, String.format("%s/textures/model/%s.png", MODEL_ASSET.getDomain(), MODEL_ASSET.getPath())); }
 
-	public static void compile(File assetsTopPath) throws IOException{
+	public static void compile(File assetsOutPath) throws IOException{
 		InputStream itemStream = getSegmentedResourceStream("item"), liquidStream = getSegmentedResourceStream("liquid");
 		BufferedImage itemImg = ImageIO.read(itemStream), liquidImg = ImageIO.read(liquidStream);
 		SulvicIO.closeQuietly(itemStream, liquidStream);
-		File output = getModelPath(assetsTopPath);
+		File output = getModelPath(assetsOutPath);
 		if(!SulvicIO.pathExists(output)) SulvicIO.createFolder(output.getParentFile());
 		BufferedImage finalImg = new BufferedImage(itemImg.getWidth() * 64, itemImg.getHeight() * 2, TYPE_INT_ARGB);
+		for(Signal signal: Signal.values()) getSignalTexture(signal);
+		for(Filter filter: Filter.values()) getFilterTexture(filter);
+		for(FastTransfer transfer: FastTransfer.values()) getFastTransferTexture(transfer);
+		for(Inverter inverter: Inverter.values()) getInverterTexture(inverter);
 		int offsetX = 0;
 		for(Signal signal: Signal.values()) for(Filter filter: Filter.values()) for(FastTransfer transfer: FastTransfer.values()) for(Inverter inverter: Inverter.values()){
 			BufferedImage finalItemImg = buildFinalImage(itemImg, transfer, filter, inverter, signal),
 				finalLiquidImg = buildFinalImage(liquidImg, transfer, filter, inverter, signal);
 			for(int x = 0; x < finalItemImg.getWidth(); x++) for(int y = 0; y < finalItemImg.getHeight(); y++){
 				finalImg.setRGB(x + offsetX, y, finalItemImg.getRGB(x, y));
-				finalImg.setRGB(x+  offsetX, y+64, finalLiquidImg.getRGB(x, y));
+				finalImg.setRGB(x + offsetX, y + 64, finalLiquidImg.getRGB(x, y));
 			}
 			offsetX += 64;
 		}
@@ -133,20 +137,7 @@ public class TranslocatorStitcher{
 			if(filterAlpha > 0f){
 				switch(filter){
 					case USED:
-						resultRGB = NORMAL.getModeColor(resultRGB, transferRGB, transferAlpha) | (0xFF << 24);
-					break;
-					default:
-					break;
-				}
-			}
-			if(inverterAlpha > 0f){
-				switch(inverter){
-					case OFF:
-					case ON:
-						resultRGB = NORMAL.getModeColor(resultRGB, transferRGB, transferAlpha) | (0xFF << 24);
-					break;
-					case UNKNOWN:
-						resultRGB = NORMAL.getModeColor(resultRGB, transferRGB) | (0xFF << 24);
+						resultRGB = NORMAL.getModeColor(resultRGB, filterRGB, filterAlpha) | (0xFF << 24);
 					break;
 					default:
 					break;
@@ -156,7 +147,20 @@ public class TranslocatorStitcher{
 				switch(signal){
 					case OFF:
 					case ON:
-						resultRGB = NORMAL.getModeColor(resultRGB, transferRGB, transferAlpha) | (0xFF << 24);
+						resultRGB = NORMAL.getModeColor(resultRGB, signalRGB, signalAlpha) | (0xFF << 24);
+					break;
+					default:
+					break;
+				}
+			}
+			if(inverterAlpha > 0f){
+				switch(inverter){
+					case OFF:
+					case ON:
+						resultRGB = NORMAL.getModeColor(resultRGB, inverterRGB, inverterAlpha) | (0xFF << 24);
+					break;
+					case UNKNOWN:
+						resultRGB = NORMAL.getModeColor(resultRGB, inverterRGB) | (0xFF << 24);
 					break;
 					default:
 					break;

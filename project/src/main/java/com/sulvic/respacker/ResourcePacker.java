@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileInputStream;
 
 import com.sulvic.pdn.PdnImage;
+import com.sulvic.respacker.translocator.TranslocatorStitcher;
 
 public class ResourcePacker{
 	
@@ -20,10 +21,11 @@ public class ResourcePacker{
 //			
 //			break;
 //		}
-		FileInputStream stream = new FileInputStream(new File(ResourcePacker.class.getResource("/images/translocator/segmented/all_objects.pdn").toURI()));
-		System.out.println(stream.getChannel() != null);
-		PdnImage img = PdnImage.fromStream(stream);
-		System.out.println(img);
+//		FileInputStream stream = new FileInputStream(new File(ResourcePacker.class.getResource("/images/translocator/segmented/all_objects.pdn").toURI()));
+//		System.out.println(stream.getChannel() != null);
+//		PdnImage img = PdnImage.fromStream(stream);
+//		System.out.println(img);
+		TranslocatorStitcher.compile(new File("src/main/resources/compiled/assets/"));
 	}
 	
 	public static enum PackVersion{
