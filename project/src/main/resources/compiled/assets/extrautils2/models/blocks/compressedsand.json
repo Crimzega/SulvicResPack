@@ -1,0 +1,6 @@
+{
+	"parent": "block/cube_all",
+	"textures": {
+		"all": "sulvic:/blocks/compressed_sand/level_1"
+	}
+}

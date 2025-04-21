@@ -1,0 +1,50 @@
+{
+	"forge_marker": 1,
+	"defaults": {
+		"model": "minecraft:cube_all"
+	},
+	"variants": {
+		"compression_level_netherrack": {
+			"1": {
+				"textures": {
+					"all": "sulvic:blocks/compressed_netherrack/level_1"
+				}
+			},
+			"2": {
+				"textures": {
+					"all": "sulvic:blocks/compressed_netherrack/level_2"
+				}
+			},
+			"3": {
+				"textures": {
+					"all": "sulvic:blocks/compressed_netherrack/level_3"
+				}
+			},
+			"4": {
+				"textures": {
+					"all": "sulvic:blocks/compressed_netherrack/level_4"
+				}
+			},
+			"5": {
+				"textures": {
+					"all": "sulvic:blocks/compressed_netherrack/level_5"
+				}
+			},
+			"6": {
+				"textures": {
+					"all": "sulvic:blocks/compressed_netherrack/level_6"
+				}
+			},
+			"7": {
+				"textures": {
+					"all": "sulvic:blocks/compressed_netherrack/level_7"
+				}
+			},
+			"8": {
+				"textures": {
+					"all": "sulvic:blocks/compressed_netherrack/level_8"
+				}
+			}
+		}
+	}
+}
