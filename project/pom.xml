@@ -46,10 +46,5 @@
 			<artifactId>protobuf-javalite</artifactId>
 			<version>4.26.0-RC3</version>
 		</dependency>
-		<dependency>
-			<groupId>com.google.protobuf</groupId>
-			<artifactId>protobuf-java-util</artifactId>
-			<version>4.26.0-RC3</version>
-		</dependency>
 	</dependencies>
 </project>

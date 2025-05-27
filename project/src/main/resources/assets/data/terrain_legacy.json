@@ -19,7 +19,7 @@
 		"0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0"
 	],
 	"entries": {
-		"0": "sulvic:terrain_unused",
+		"0": "sulvic:unknown_block",
 		"1": "sulvic:grass_top_colored",
 		"2": "minecraft:cobblestone"
 	}
@@ -44,7 +44,7 @@
 		"0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0"
 	],
 	"entries": {
-		"0": "sulvic:terrain_unused",
+		"0": "sulvic:unknown_block",
 		"1": "sulvic:grass_top_colored",
 		"2": "minecraft:stone",
 		"3": "minecraft:dirt",
@@ -73,7 +73,7 @@
 		"0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0"
 	],
 	"entries": {
-		"0": "sulvic:terrain_unused",
+		"0": "sulvic:unknown_block",
 		"1": "sulvic:grass_top_colored",
 		"2": "minecraft:stone",
 		"3": "minecraft:dirt",
@@ -103,7 +103,7 @@
 		"0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0"
 	],
 	"entries": {
-		"0": "sulvic:terrain_unused",
+		"0": "sulvic:unknown_block",
 		"1": "sulvic:grass_top_colored",
 		"2": "minecraft:stone",
 		"3": "minecraft:dirt",
@@ -147,7 +147,7 @@
 		"0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0"
 	],
 	"entries": {
-		"0": "sulvic:terrain_unused",
+		"0": "sulvic:unknown_block",
 		"1": "sulvic:grass_top_colored",
 		"2": "minecraft:stone",
 		"3": "minecraft:dirt",
@@ -201,7 +201,7 @@
 		"0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0"
 	],
 	"entries": {
-		"0": "sulvic:terrain_unused",
+		"0": "sulvic:unknown_block",
 		"1": "sulvic:grass_top_colored",
 		"2": "minecraft:stone",
 		"3": "minecraft:dirt",
@@ -253,7 +253,7 @@
 		"0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0"
 	],
 	"entries": {
-		"0": "sulvic:terrain_unused",
+		"0": "sulvic:unknown_block",
 		"1": "sulvic:grass_top_colored",
 		"2": "minecraft:stone",
 		"3": "minecraft:dirt",
@@ -307,7 +307,7 @@
 		"0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0"
 	],
 	"entries": {
-		"0": "sulvic:terrain_unused",
+		"0": "sulvic:unknown_block",
 		"1": "sulvic:grass_top_colored",
 		"2": "minecraft:stone",
 		"3": "minecraft:dirt",
@@ -377,7 +377,7 @@
 		"g","h","i","j","k","l","m","n","o","p","0","0","0","0","0","0"
 	],
 	"entries": {
-		"0": "sulvic:terrain_unused",
+		"0": "sulvic:unknown_block",
 		"1": "sulvic:grass_top_colored",
 		"2": "minecraft:stone",
 		"3": "minecraft:dirt",
