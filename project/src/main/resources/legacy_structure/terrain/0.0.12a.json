@@ -1,7 +1,7 @@
 {
 	"pattern": [
-		"0", "1", "2", "3", "4", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "5",
-		"6", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "0",
+		"0", "1", "2", "3", "4", " ", " ", " ", " ", " ", " ", " ", " ", "5", "6", "7",
+		"8", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "9", "1",
 		" ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ",
 		" ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ",
 		" ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ",
@@ -18,12 +18,26 @@
 		" ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " "
 	],
 	"entries": {
-		"0": "sulvic:grass_colored_top",
+		"0": "sulvic:grass_top_colored",
 		"1": "minecraft:stone",
 		"2": "minecraft:dirt",
 		"3": "minecraft:grass_side",
 		"4": "minecraft:planks_oak",
-		"5": "minecraft:sapling_oak",
-		"6": "minecraft:cobblestone"
+		"5": {
+			"name": "minecraft:water_still",
+			"index": [0, 0],
+			"asOpaque": true
+		},
+		"6": {
+			"name": "minecraft:water_still",
+			"index": [0, 0]
+		},
+		"7": "minecraft:sapling_oak",
+		"8": "minecraft:cobblestone",
+		"9": {
+			"name": "minecraft:lava_still",
+			"index": [0, 0],
+			"withAlpha": "148"
+		}
 	}
 }

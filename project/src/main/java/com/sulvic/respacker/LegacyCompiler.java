@@ -69,10 +69,10 @@ public class LegacyCompiler{
 			}
 			int index = 0;
 			for(String entry: textureData){
-				index++;
 				int offX = (index % 16) * mainTex.getWidth(), offY = (index / 16) * mainTex.getHeight();
 				BufferedImage img = collectedImage.containsKey(entry)? collectedImage.get(entry): mainTex;
 				for(int y = 0; y < mainTex.getHeight(); y++) for(int x = 0; x < mainTex.getWidth(); x++) finalImg.setRGB(x+offX, y+offY, img.getRGB(x, y));
+				index++;
 			}
 		}
 

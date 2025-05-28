@@ -1,9 +1,9 @@
 {
 	"pattern": [
-		"0", "1", "2", "3", "4", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "5",
-		"6", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "0",
-		" ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ",
-		" ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ",
+		"0", "1", "2", "3", "4", " ", " ", " ", " ", " ", " ", " ", " ", "5", "6", "7",
+		"8", "9", "A", "B", "C", "D", "E", " ", " ", " ", " ", " ", " ", " ", "F", "0",
+		"G", "H", "I", "0", "2", "3", "0", " ", " ", " ", " ", " ", " ", " ", " ", " ",
+		" ", " ", " ", " ", "J", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ",
 		" ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ",
 		" ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ",
 		" ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ",
@@ -18,12 +18,35 @@
 		" ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " "
 	],
 	"entries": {
-		"0": "sulvic:grass_colored_top",
+		"0": "sulvic:grass_top_colored",
 		"1": "minecraft:stone",
 		"2": "minecraft:dirt",
 		"3": "minecraft:grass_side",
 		"4": "minecraft:planks_oak",
-		"5": "minecraft:sapling_oak",
-		"6": "minecraft:cobblestone"
+		"5": {
+			"name": "minecraft:water_still",
+			"index": [0, 0],
+			"asOpaque": true
+		},
+		"6": {
+			"name": "minecraft:water_still",
+			"index": [0, 0]
+		},
+		"7": "minecraft:sapling_oak",
+		"8": "minecraft:cobblestone",
+		"9": "minecraft:bedrock",
+		"A": "minecraft:sand",
+		"B": "minecraft:gravel",
+		"C": "minecraft:log_oak",
+		"D": "minecraft:log_oak_top",
+		"E": "minecraft:leaves_oak_fancy",
+		"F": {
+			"name": "minecraft:lava_still",
+			"index": [0, 0]
+		},
+		"G": "minecraft:gold_ore",
+		"H": "minecraft:iron_ore",
+		"I": "minecraft:coal_ore",
+		"J": "minecraft:wool_white"
 	}
 }

@@ -10,6 +10,7 @@
 	"files.insertFinalNewline": true,
 	"files.eol": "\n",
 	"files.trimFinalNewlines": true,
+	"jdk.project.jdkhome": "C:\\Program Files\\Java\\JDK-8.0.431",
 	"java.project.sourcePaths": ["project/main/src/java"],
 	"java.project.outputPath": "project/target/classes",
 	"java.configuration.updateBuildConfiguration": "automatic"
