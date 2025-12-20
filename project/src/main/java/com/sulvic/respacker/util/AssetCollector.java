@@ -4,47 +4,31 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.util.Properties;
 
 import javax.annotation.Nullable;
 import javax.imageio.ImageIO;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.google.gson.stream.JsonReader;
 import com.sulvic.engine.util.AssetLocation;
+import com.sulvic.respacker.compiler.CtmCompiler;
+import com.sulvic.respacker.compiler.CtmDeserializer;
+import com.sulvic.respacker.compiler.ImageCompiler;
+import com.sulvic.respacker.compiler.ImageDeserializer;
+import com.sulvic.respacker.lib.CtmFileInfo;
 
 public class AssetCollector{
-
-	private static final LegacyDeserializer DESERIALIZER = new LegacyDeserializer();
 
 	@Nullable
 	private static InputStream getStreamResource(String name){ return AssetCollector.class.getResourceAsStream(name); }
 
-	private static LegacyData getLegacyData(String path){
-		Gson gson = new GsonBuilder().registerTypeAdapter(LegacyData.class, DESERIALIZER).create();
-		JsonReader reader = new JsonReader(new InputStreamReader(getStreamResource(path)));
-		LegacyData result = gson.fromJson(reader, LegacyData.class);
-		try{
-			reader.close();
-		}
-		catch(IOException ex){
-			ex.printStackTrace();
-		}
-		return result;
-	}
-
-	public static LegacyData getLegacyTerrainData(MCVersion version){ return getLegacyData(String.format("/legacy_structure/terrain/%s.json", version.getGameVersion())); }
-
-	public static LegacyData getLegacyItemData(MCVersion version){ return getLegacyData(String.format("/legacy_structure/items/%s.json", version.getGameVersion())); }
-
 	@Nullable
-	public static BufferedImage getProjectImage(AssetLocation assetLoc){
-		String pathFmt = "/project/assets/%s/textures/%s.png";
-		String projectImgPath = String.format(pathFmt, assetLoc.getDomain(), assetLoc.getPath());
+	public static BufferedImage getCompilerImage(AssetLocation assetLoc){
+		String compImgPath = String.format("/compiler/assets/%s/%s.png", assetLoc.getDomain(), assetLoc.getPath());
 		BufferedImage result = null;
 		try{
-			result = ImageIO.read(getStreamResource(projectImgPath));
+			System.out.println(compImgPath);
+			result = ImageIO.read(getStreamResource(compImgPath));
 		}
 		catch(IOException ex){
 			ex.printStackTrace();
@@ -52,33 +36,25 @@ public class AssetCollector{
 		return result;
 	}
 
-	@Nullable
-	public static BufferedImage getCtmImage(AssetLocation assetLoc){
-		String pathFmt = "/project/assets/%s/optifine/ctm/%s.png";
-		String ctmImgPath = String.format(pathFmt, assetLoc.getDomain(), assetLoc.getPath());
-		BufferedImage result = null;
-		try{
-			result = ImageIO.read(getStreamResource(ctmImgPath));
-		}
-		catch(IOException ex){
-			ex.printStackTrace();
-		}
+	public static ImageCompiler getCompileData(AssetLocation assetLoc){
+		String pathFmt = "/compiler/assets/%s/%s/compile.icd";
+		String compileFmt = String.format(pathFmt, assetLoc.getDomain(), assetLoc.getPath());
+		Class<ImageCompiler.LayerCompiler[]> compilerCls = ImageCompiler.LayerCompiler[].class;
+		ImageCompiler result = new ImageCompiler(assetLoc);
+		Gson gson = new GsonBuilder().registerTypeAdapter(compilerCls, new ImageDeserializer()).create();
+		ImageCompiler.LayerCompiler[] compilers = gson.fromJson(new InputStreamReader(getStreamResource(compileFmt)), compilerCls);
+		result.addLayers(compilers);
 		return result;
 	}
 
-	public static Properties getCtmProperties(AssetLocation assetLoc){
-		String pathFmt = "/project/assets/%s/optifine/ctm/%s.properties";
-		String propertiesPath = String.format(pathFmt, assetLoc.getDomain(), assetLoc.getPath());
-		Properties result = new Properties();
-		try{
-			InputStream stream = getStreamResource(propertiesPath);
-			result.load(stream);
-			stream.close();
-		}
-		catch(IOException ex){
-			ex.printStackTrace();
-		}
-		return result;
+	public static CtmCompiler getCtmCompileData(AssetLocation assetLoc){
+		String pathFmt = "/compiler/assets/%s/optifine/ctm/%s/ctm_compile.icd";
+		String ctmCompilePath = String.format(pathFmt, assetLoc.getDomain(), assetLoc.getPath());
+		Class<CtmFileInfo> infoCls = CtmFileInfo.class;
+		Gson gson = new GsonBuilder().registerTypeAdapter(infoCls, new CtmDeserializer()).create();
+		CtmFileInfo info = gson.fromJson(new InputStreamReader(getStreamResource(ctmCompilePath)), infoCls);
+		info.addBaseLocation(new AssetLocation(assetLoc.getDomain(), String.format("optifine/ctm/%s", assetLoc.getPath())));
+		return new CtmCompiler(assetLoc, info);
 	}
-	
+
 }

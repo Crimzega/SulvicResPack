@@ -7,12 +7,12 @@ import javax.annotation.Nullable;
 
 import com.google.common.collect.Maps;
 import com.sulvic.engine.util.AssetLocation;
-import com.sulvic.util.SulvicMath;
+import com.sulvic.respacker.compiler.LegacyCompiler;
 
 public class LegacyData implements Iterable<String>{
 
 	private String[] entryStructure = new String[256];
-	private Map<String, AssetData> entryData = Maps.newHashMap();
+	private Map<String, StitchData> entryData = Maps.newHashMap();
 
 	public LegacyData(){ this(makeDefaultPattern()); }
 
@@ -24,13 +24,17 @@ public class LegacyData implements Iterable<String>{
 		return result;
 	}
 
-	@Nullable
-	public AssetData getData(String entry){ return entryData.containsKey(entry)? entryData.get(entry): (AssetData)null; }
+	public int size(){ return entryStructure.length; }
 
 	@Override
 	public Iterator<String> iterator(){ return new LegacyIterator(this); }
 
-	public void setEntryPattern(String entry, AssetData data){ entryData.put(entry, data); }
+	@Nullable
+	public StitchData getData(String entry){ return entryData.containsKey(entry)? entryData.get(entry): (StitchData)null; }
+
+	public String getEntry(int index){ return entryStructure[index]; }
+
+	public void setEntryPattern(String entry, StitchData data){ entryData.put(entry, data); }
 
 	private static class LegacyIterator implements Iterator<String>{
 
@@ -47,45 +51,62 @@ public class LegacyData implements Iterable<String>{
 
 	}
 
-	public static class AssetData{
+	public static class StitchData{
 
-		private final AssetLocation assetLoc;
-		private int[] indexOffset = new int[2];
-		private boolean asOpqaue = false;
-		private boolean usesAlphaOverride = false, usesIndexOffset = false;
-		private int alphaOverride = 255;
+		private final AssetLocation stitchAssetLoc;
+		private final LegacyCompiler.CompileType compileType;
+		private boolean asOpaque = false, usesAlphaOverride = false, usesIndexOffset = false;
+		private int xIndexOffset, yIndexOffset, alphaOverride = 255;
 
-		public AssetData(String name){ assetLoc = new AssetLocation(name); }
-		
-		public int[] getIndexOffset(){ return indexOffset; }
+		public StitchData(AssetLocation assetLoc, LegacyCompiler.CompileType type){
+			stitchAssetLoc = assetLoc;
+			compileType = type;
+		}
 
-		public AssetData setIndexOffset(int x, int y){
-			indexOffset[0] = x;
-			indexOffset[1] = y;
+		public StitchData setIndexOffset(int x, int y){
+			xIndexOffset = x;
+			yIndexOffset = y;
 			usesIndexOffset = true;
 			return this;
 		}
 
-		public AssetData setTextureAlpha(int alpha){
-			alphaOverride = SulvicMath.clampInt(alpha, 0, 255);
-			usesAlphaOverride = true;
-			return this;
-		}
+		public AssetLocation getAssetLocation(){ return stitchAssetLoc; }
 
-		public AssetData setAsOpaque(boolean value){
-			asOpqaue = value;
-			return this;
-		}
+		public LegacyCompiler.CompileType getCompileType(){ return compileType; }
 
-		public AssetLocation getAssetLocation(){ return assetLoc; }
-
-		public boolean asOpqaue(){ return asOpqaue; }
+		public boolean asOpaque(){ return asOpaque; }
 
 		public boolean usesAlphaOverride(){ return usesAlphaOverride; }
 
 		public boolean usesIndexOffset(){ return usesIndexOffset; }
 
 		public int getAlphaOverride(){ return alphaOverride; }
+
+		public int getIndexOffsetX(){ return xIndexOffset; }
+
+		public int getIndexOffsetY(){ return yIndexOffset; }
+
+		public StitchData setAsOpaque(boolean opaque){
+			asOpaque = opaque;
+			return this;
+		}
+
+		public StitchData setAlphaOverride(int override){
+			alphaOverride = override;
+			usesAlphaOverride = true;
+			return this;
+		}
+
+		// public void compileStitch(BufferedImage baseImg, LegacyCompiler.Type type){
+		// String typePath = type == LegacyCompiler.Type.TERRAIN? "blocks": "items";
+		// AssetLocation finalAssetLoc = new AssetLocation(stitchAssetLoc.getDomain(), String.format("%s/%s", typePath, stitchAssetLoc.getPath()));
+		// BufferedImage img = null;
+		// switch(compileType){
+		// case IMAGE: img = AssetCollector.getCompileData(finalAssetLoc).compileImage();
+		// default: img = AssetCollector.getCompilerImage(finalAssetLoc);
+		// }
+		// if(img != null){}
+		// }
 
 	}
 

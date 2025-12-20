@@ -1,4 +1,8 @@
 {
+	"[json]": {
+		"editor.formatOnPaste": false,
+		"editor.formatOnSave": false
+	},
 	"[java]": {
 		"editor.suggest.snippetsPreventQuickSuggestions": false,
 		"editor.formatOnSave": false,
@@ -6,12 +10,21 @@
 		"editor.formatOnPaste": false
 	},
 	"editor.insertSpaces": false,
-	"editor.rulers": [180],
+	"editor.rulers": [
+		180
+	],
 	"files.insertFinalNewline": true,
 	"files.eol": "\n",
+	"explorer.sortOrder": "type",
 	"files.trimFinalNewlines": true,
 	"jdk.project.jdkhome": "C:\\Program Files\\Java\\JDK-8.0.431",
-	"java.project.sourcePaths": ["project/main/src/java"],
+	"java.project.sourcePaths": [
+		"project/main/src/java"
+	],
+	"files.associations": {
+		"*.icd": "json"
+	},
 	"java.project.outputPath": "project/target/classes",
-	"java.configuration.updateBuildConfiguration": "automatic"
+	"java.configuration.updateBuildConfiguration": "automatic",
+	"search.sortOrder": "type"
 }

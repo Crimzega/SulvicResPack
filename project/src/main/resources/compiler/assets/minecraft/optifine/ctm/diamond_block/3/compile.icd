@@ -1,0 +1,20 @@
+[
+	{
+		"name": "layer1"
+	}, {
+		"name": "layer2",
+		"blend": "add",
+		"opacity": 64
+	}, {
+		"name": "layer3",
+		"blend": "multiply"
+	}, {
+		"name": "layer4",
+		"blend": "multiply",
+		"opacity": 192
+	}, {
+		"name": "layer5",
+		"blend": "multiply",
+		"opacity": 128
+	}
+]
