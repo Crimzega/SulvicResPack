@@ -11,8 +11,8 @@ import com.sulvic.respacker.compiler.LegacyCompiler;
 
 public class LegacyData implements Iterable<String>{
 
+	private final Map<String, StitchData> entryData = Maps.newHashMap();
 	private String[] entryStructure = new String[256];
-	private Map<String, StitchData> entryData = Maps.newHashMap();
 
 	public LegacyData(){ this(makeDefaultPattern()); }
 
@@ -38,8 +38,8 @@ public class LegacyData implements Iterable<String>{
 
 	private static class LegacyIterator implements Iterator<String>{
 
+		private final LegacyData theData;
 		private int currentIndex;
-		private LegacyData theData;
 
 		private LegacyIterator(LegacyData data){ theData = data; }
 
@@ -96,17 +96,6 @@ public class LegacyData implements Iterable<String>{
 			usesAlphaOverride = true;
 			return this;
 		}
-
-		// public void compileStitch(BufferedImage baseImg, LegacyCompiler.Type type){
-		// String typePath = type == LegacyCompiler.Type.TERRAIN? "blocks": "items";
-		// AssetLocation finalAssetLoc = new AssetLocation(stitchAssetLoc.getDomain(), String.format("%s/%s", typePath, stitchAssetLoc.getPath()));
-		// BufferedImage img = null;
-		// switch(compileType){
-		// case IMAGE: img = AssetCollector.getCompileData(finalAssetLoc).compileImage();
-		// default: img = AssetCollector.getCompilerImage(finalAssetLoc);
-		// }
-		// if(img != null){}
-		// }
 
 	}
 

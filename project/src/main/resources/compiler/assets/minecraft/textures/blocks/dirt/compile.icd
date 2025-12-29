@@ -1,17 +1,14 @@
 [
 	{
 		"name": "layer1",
-		"blend": "normal"
-	}, {
-		"name": "layer2",
 		"blend": "lighten",
 		"opacity": "64"
 	}, {
-		"name": "layer3",
+		"name": "layer2",
 		"blend": "multiply",
 		"opacity": 48
 	}, {
-		"name": "layer4",
+		"name": "layer3",
 		"blend": "overlay",
 		"opacity": 32
 	}

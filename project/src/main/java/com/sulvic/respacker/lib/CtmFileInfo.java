@@ -10,9 +10,9 @@ import com.sulvic.engine.util.AssetLocation;
 public class CtmFileInfo implements Iterable<String>{
 
 	private final String ctmFilename;
+	private final List<String> ctmImageFiles = Lists.newArrayList();
 	private final Properties ctmProperties;
 	private AssetLocation ctmBaseLocation;
-	private List<String> ctmImageFiles = Lists.newArrayList();
 
 	public CtmFileInfo(String filename){
 		ctmFilename = filename;
@@ -40,6 +40,8 @@ public class CtmFileInfo implements Iterable<String>{
 	public Iterator<String> iterator(){ return ctmImageFiles.iterator(); }
 
 	public Properties getProperties(){ return ctmProperties; }
+
+	public String getProperty(String name){ return ctmProperties.getProperty(name, ""); }
 
 	public String getFilename(){ return ctmFilename; }
 

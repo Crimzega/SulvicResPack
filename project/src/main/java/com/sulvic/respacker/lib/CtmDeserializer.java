@@ -1,9 +1,8 @@
-package com.sulvic.respacker.compiler;
+package com.sulvic.respacker.lib;
 
 import java.lang.reflect.Type;
 
 import com.google.gson.*;
-import com.sulvic.respacker.lib.CtmFileInfo;
 
 public class CtmDeserializer implements JsonDeserializer<CtmFileInfo>{
 

@@ -13,18 +13,19 @@
 	"editor.rulers": [
 		180
 	],
-	"files.insertFinalNewline": true,
-	"files.eol": "\n",
 	"explorer.sortOrder": "type",
-	"files.trimFinalNewlines": true,
-	"jdk.project.jdkhome": "C:\\Program Files\\Java\\JDK-8.0.431",
-	"java.project.sourcePaths": [
-		"project/main/src/java"
-	],
+	"files.insertFinalNewline": true,
 	"files.associations": {
 		"*.icd": "json"
 	},
-	"java.project.outputPath": "project/target/classes",
+	"files.eol": "\n",
+	"files.trimFinalNewlines": true,
+	"java.project.sourcePaths": [
+		"project/main/src/java"
+	],
+	"java.compile.nullAnalysis.mode": "disabled",
 	"java.configuration.updateBuildConfiguration": "automatic",
+	"java.project.outputPath": "project/target/classes",
+	"jdk.project.jdkhome": "C:\\Program Files\\Java\\JDK-8.0.431",
 	"search.sortOrder": "type"
 }

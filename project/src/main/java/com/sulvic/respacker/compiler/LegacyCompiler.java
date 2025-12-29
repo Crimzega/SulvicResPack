@@ -50,9 +50,11 @@ public class LegacyCompiler{
 			BufferedImage result = null;
 			switch(stitchData.getCompileType()){
 				case IMAGE:
-					result = AssetCollector.getCompileData(finalAssetLoc).compileImage();
+//					result = AssetCollector.getCompileData(finalAssetLoc).compileImage();
+				break;
 				default:
 					result = AssetCollector.getCompilerImage(finalAssetLoc);
+				break;
 			}
 			if(result != null){
 				boolean asOpaque = stitchData.asOpaque(), useOverrideAlpha = stitchData.usesAlphaOverride(), useIndexOffset = stitchData.usesIndexOffset();

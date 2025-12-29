@@ -1,12 +1,10 @@
 [
 	{
-		"name": "layer1"
-	}, {
-		"name": "layer2",
+		"name": "layer1",
 		"blend": "multiply",
 		"opacity": 128
 	}, {
-		"name": "layer3",
+		"name": "layer2",
 		"blend": "overlay"
 	}
 ]

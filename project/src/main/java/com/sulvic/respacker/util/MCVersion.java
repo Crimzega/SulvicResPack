@@ -373,7 +373,7 @@ public enum MCVersion implements Comparator<MCVersion>{
 	RELEASE_1_21_10("release-1.21.10"),
 	RELEASE_1_21_11("release-1.21.11");
 
-	private String versionString;
+	private final String versionString;
 
 	MCVersion(String str){ versionString = str; }
 
@@ -387,5 +387,117 @@ public enum MCVersion implements Comparator<MCVersion>{
 	}
 
 	public String getVersionString(){ return versionString; }
+
+	@Nullable
+	public int getPackFormat(){
+
+		switch(this){
+			case RELEASE_1_6_1:
+			case RELEASE_1_6_2:
+			case RELEASE_1_6_4:
+			case RELEASE_1_7_2:
+			case RELEASE_1_7_4:
+			case RELEASE_1_7_5:
+			case RELEASE_1_7_6:
+			case RELEASE_1_7_7:
+			case RELEASE_1_7_8:
+			case RELEASE_1_7_9:
+			case RELEASE_1_7_10:
+			case RELEASE_1_8:
+			case RELEASE_1_8_1:
+			case RELEASE_1_8_2:
+			case RELEASE_1_8_3:
+			case RELEASE_1_8_4:
+			case RELEASE_1_8_5:
+			case RELEASE_1_8_6:
+			case RELEASE_1_8_7:
+			case RELEASE_1_8_8:
+			case RELEASE_1_8_9:
+				return 1;
+			case RELEASE_1_9:
+			case RELEASE_1_9_1:
+			case RELEASE_1_9_2:
+			case RELEASE_1_9_3:
+			case RELEASE_1_9_4:
+			case RELEASE_1_10:
+			case RELEASE_1_10_1:
+			case RELEASE_1_10_2:
+				return 2;
+			case RELEASE_1_11:
+			case RELEASE_1_11_1:
+			case RELEASE_1_11_2:
+			case RELEASE_1_12:
+			case RELEASE_1_12_1:
+			case RELEASE_1_12_2:
+				return 3;
+			case RELEASE_1_13:
+			case RELEASE_1_13_1:
+			case RELEASE_1_14:
+			case RELEASE_1_14_1:
+			case RELEASE_1_14_2:
+			case RELEASE_1_14_3:
+			case RELEASE_1_14_4:
+				return 4;
+			case RELEASE_1_15:
+			case RELEASE_1_15_1:
+			case RELEASE_1_15_2:
+			case RELEASE_1_16:
+			case RELEASE_1_16_1:
+				return 5;
+			case RELEASE_1_16_2:
+			case RELEASE_1_16_3:
+			case RELEASE_1_16_4:
+			case RELEASE_1_16_5:
+				return 6;
+			case RELEASE_1_17:
+			case RELEASE_1_17_1:
+				return 7;
+			case RELEASE_1_18:
+			case RELEASE_1_18_1:
+			case RELEASE_1_18_2:
+				return 8;
+			case RELEASE_1_19:
+			case RELEASE_1_19_1:
+			case RELEASE_1_19_2:
+				return 9;
+			case RELEASE_1_19_3:
+				return 12;
+			case RELEASE_1_19_4:
+				return 13;
+			case RELEASE_1_20:
+			case RELEASE_1_20_1:
+				return 15;
+			case RELEASE_1_20_2:
+				return 18;
+			case RELEASE_1_20_3:
+			case RELEASE_1_20_4:
+				return 22;
+			case RELEASE_1_20_5:
+			case RELEASE_1_20_6:
+				return 32;
+			case RELEASE_1_21:
+			case RELEASE_1_21_1:
+				return 34;
+			case RELEASE_1_21_2:
+			case RELEASE_1_21_3:
+				return 42;
+			case RELEASE_1_21_4:
+				return 46;
+			case RELEASE_1_21_5:
+				return 55;
+			case RELEASE_1_21_6:
+				return 63;
+			case RELEASE_1_21_7:
+			case RELEASE_1_21_8:
+				return 64;
+			case RELEASE_1_21_9:
+			case RELEASE_1_21_10:
+				return 69;
+			case RELEASE_1_21_11:
+				return 75;
+			default:
+				return 0;
+		}
+	}
 
 }
