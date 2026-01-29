@@ -13,6 +13,17 @@
 	"editor.rulers": [
 		180
 	],
+	"openInExternalApp.openMapper": [
+		{
+			"extensionName": "png",
+			"apps": [
+				{
+					"title": "Paint.NET",
+					"openCommand": "C:\\Program Files\\Paint.NET\\paintdotnet.exe"
+				}
+			]
+		}
+	],
 	"explorer.sortOrder": "type",
 	"files.insertFinalNewline": true,
 	"files.associations": {

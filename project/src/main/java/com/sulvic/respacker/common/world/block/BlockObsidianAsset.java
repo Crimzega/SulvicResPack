@@ -6,9 +6,9 @@ import com.sulvic.respacker.util.AssetCollector;
 
 public class BlockObsidianAsset extends PackCompiler.AssetCompiler{
 
-	public BlockObsidianAsset(){ super("minecraft:textures/blocks/bedrock"); }
+	public BlockObsidianAsset(){ super("minecraft:textures/blocks/obsidian"); }
 
-	@Override
+    @Override
 	public ICompiler<?> getCompiler(String outDomainPath){ return AssetCollector.getImageCompiler(outDomainPath, getInputAssetLocation()); }
 
 }

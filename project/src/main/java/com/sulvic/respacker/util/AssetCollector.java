@@ -14,6 +14,7 @@ import com.sulvic.engine.util.AssetLocation;
 import com.sulvic.respacker.compiler.CopyCompiler;
 // import com.sulvic.respacker.compiler.CtmCompiler;
 import com.sulvic.respacker.compiler.ImageCompiler;
+import com.sulvic.respacker.lib.CtmFileInfo;
 // import com.sulvic.respacker.lib.CtmDeserializer;
 // import com.sulvic.respacker.lib.CtmFileInfo;
 import com.sulvic.respacker.lib.ImageDeserializer;
@@ -88,6 +89,14 @@ public class AssetCollector{
 			return result;
 		}
 		else return StoredContentSet.getCollectedCompiler(outDomainPath);
+	}
+
+	public static CtmCompiler getCtmCompiler(String outDomainPath, AssetLocation assetLoc){
+		String ctmCompilePath = String.format("/compiler/assets/%s/optifine/ctm/%s/ctm_compile.icd", assetLoc.getDomain(), assetLoc.getPath());
+		if(!StoredContentSet.hasCtmCompiler(outDomainPath)){
+			Class<CtmFileInfo> infoCls = CtmFileInfo.class;
+		}
+		else return StoredContentSet.getCtmCompiler(outDomainPath);
 	}
 
 //	public static CtmCompiler getCtmCompileData(AssetLocation assetLoc){

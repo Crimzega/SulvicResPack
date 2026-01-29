@@ -1,0 +1,17 @@
+[
+	{
+		"name": "layer1",
+		"blend": "darken",
+		"opacity": 128
+	},
+	{
+		"name": "layer2",
+		"blend": "glow",
+		"opacity": 32
+	},
+	{
+		"name": "layer3",
+		"blend": "multiply",
+		"opacity": 48
+	}
+]

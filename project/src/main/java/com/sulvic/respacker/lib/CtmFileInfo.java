@@ -6,11 +6,12 @@ import java.util.Properties;
 
 import com.google.common.collect.Lists;
 import com.sulvic.engine.util.AssetLocation;
+import com.sulvic.util.ContentBuilder;
 
 public class CtmFileInfo implements Iterable<String>{
 
 	private final String ctmFilename;
-	private final List<String> ctmImageFiles = Lists.newArrayList();
+	private final List<String> fileNames = ContentBuilder.newArrayList();
 	private final Properties ctmProperties;
 	private AssetLocation ctmBaseLocation;
 
@@ -26,18 +27,17 @@ public class CtmFileInfo implements Iterable<String>{
 		return this;
 	}
 
-	public CtmFileInfo addImage(String file){
-		ctmImageFiles.add(file);
-		return this;
-	}
-
 	public CtmFileInfo addProperties(String key, String value){
 		ctmProperties.put(key, value);
+		switch(key){
+			case "tiles":
+			break;
+		}
 		return this;
 	}
 
 	@Override
-	public Iterator<String> iterator(){ return ctmImageFiles.iterator(); }
+	public Iterator<String> iterator(){ return fileNames.iterator(); }
 
 	public Properties getProperties(){ return ctmProperties; }
 

@@ -31,20 +31,23 @@ public abstract class ImageCompiler implements IAssetCompiler<BufferedImage>{
 	@Override
 	public BufferedImage compile(){
 		if(layerCompilers.isEmpty()) return null;
-		BufferedImage result = baseLayer;
-		for(int i = 0; i < layerCompilers.size(); i++){
-			BlendLayerCompiler compiler = layerCompilers.get(i);
+		BufferedImage result = new BufferedImage(baseLayer.getWidth(), baseLayer.getHeight(), BufferedImage.TYPE_INT_ARGB);
+		for(int x = 0; x < result.getWidth(); x++) for(int y = 0; y < result.getHeight(); y++) result.setRGB(x, y, baseLayer.getRGB(x, y));
+		int i = 0;
+		for(BlendLayerCompiler compiler: layerCompilers){
 			BufferedImage img = compiler.getLayerImage(dataAssetLocation);
 			EnumBlendMode blendMode = compiler.getBlendMode();
-			float alpha = (float)compiler.getOpacity() / 255f;
-			for(int y = 0; y < result.getHeight(); y++)for(int x = 0; x < result.getWidth(); x++){
-				int rgbBase = result.getRGB(x, y), rgbLayer = img.getRGB(x, y);
-				int layerAlpha = (rgbLayer >> 24) & 0xFF;
-				if(layerAlpha == 0) continue;
-				float effectiveAlpha = layerAlpha * (alpha / 255f);
-				int rgbBlend = blendMode.blendColor(rgbBase, rgbLayer, effectiveAlpha);
-				result.setRGB(x, y, rgbBlend + (0xFF << 24));
+			float opacity = (int)compiler.getOpacity() / 255f;
+			if(opacity == 0f) continue;
+			for(int x = 0; x < result.getWidth(); x++) for(int y = 0; y < result.getHeight(); y++){
+				int rgbBase = result.getRGB(x, y) & 0xFFFFFF, rgbLayer = img.getRGB(x, y);
+				int alphaLayer = (rgbLayer >> 24) & 0xFF;
+				rgbLayer = rgbLayer & 0xFFFFFF;
+				if(alphaLayer == 0) continue;
+				int rgbBlend = blendMode.blendColor(rgbBase, rgbLayer, opacity) & 0xFFFFFF;
+				result.setRGB(x, y, (alphaLayer << 24) + rgbBlend);
 			}
+			i++;
 		}
 		return result;
 	}

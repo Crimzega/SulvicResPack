@@ -390,7 +390,6 @@ public enum MCVersion implements Comparator<MCVersion>{
 
 	@Nullable
 	public int getPackFormat(){
-
 		switch(this){
 			case RELEASE_1_6_1:
 			case RELEASE_1_6_2:
